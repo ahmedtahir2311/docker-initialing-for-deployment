@@ -109,11 +109,11 @@ $ docker image ls
 4. To avoid copy all the code First copy Package.Json
    -Copy Package. Json .
 
-5.Installing NPM (will only insatll packages that are new else it will use Cache not the first tile )
+5.Installing NPM (will only insatll packages that are new else it will use Cache ) not the first time
 -RUN npm install
 
 6. Copy all of your Local Code to Some folder in directory
-   COPY .(all Code in local Directory) .(Directory in Image)
+   -COPY .(all Code in local Directory) .(Directory in Image)
 
 7. setting up env Variables
    -ENV ......
