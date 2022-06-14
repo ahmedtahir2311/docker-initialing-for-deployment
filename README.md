@@ -344,3 +344,7 @@ to inspect the location of the Compose CLI plugin.
 ## Creating a yaml file
 
 1. Create a `dockercompose.yaml` in the main folder that contains multiple repos
+
+### Compose all containers
+
+`sudo docker-compose up --build -d`
