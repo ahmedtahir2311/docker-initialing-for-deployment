@@ -197,3 +197,21 @@ To removing all stopped containers
 To get a list of all non-running (stopped) containers
 
 `sudo docker container ls -a --filter status=exited --filter status=created`
+
+---
+
+# Execute a Docker Container
+
+- Use docker ps to get the name of the existing container.
+
+- Use the command `sudo docker exec -it (container name) ` /bin/bash to get a bash shell in the container.
+
+- Generically, use `sudo docker exec -it <container name> <command>` to execute whatever command you specify in the container.
+
+- use sh for shellscript `sudo docker exec -it <container name> sh`
+
+---
+
+# Stop a Docker Container
+
+`docker stop <container name>`
