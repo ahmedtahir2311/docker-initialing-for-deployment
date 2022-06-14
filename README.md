@@ -343,4 +343,4 @@ to inspect the location of the Compose CLI plugin.
 
 ## Creating a yaml file
 
-1. Create a `dockercompose.yaml` in the main folder with contains multiple repos
+1. Create a `dockercompose.yaml` in the main folder that contains multiple repos
