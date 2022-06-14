@@ -1,0 +1,19 @@
+//this is an example file for File is for front end 
+
+FROM node:14.18.2-alpine3.13
+#Alpine is linux tool
+
+WORKDIR /app
+RUN npm install -g serve
+
+//make a local build then copy it
+
+COPY ./build ./build
+ENV ......
+ 
+EXPOSE 3000
+CMD ["serve", "-s","build"]
+
+
+
+
