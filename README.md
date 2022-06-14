@@ -198,6 +198,10 @@ To get a list of all non-running (stopped) containers
 
 `sudo docker container ls -a --filter status=exited --filter status=created`
 
+To remove all container including running
+
+`sudo docker rm -f $(sudo docker ps -aq)`
+
 ---
 
 # Execute a Docker Container
@@ -215,3 +219,14 @@ To get a list of all non-running (stopped) containers
 # Stop a Docker Container
 
 `docker stop <container name>`
+
+---
+
+# Docker Compose for Multi-Container
+
+Docker Compose is a tool that was developed to help define and share multi-container applications.
+With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
+`dockercompose.yaml`
+
+## Creating a yaml file
