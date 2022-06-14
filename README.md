@@ -63,11 +63,11 @@ See 'docker run --help'.
 
 If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:
 
-$ sudo usermod -aG docker ${USER}
+sudo usermod -aG docker ${USER}
 
 To apply the new group membership, log out of the server and back in, or type the following:
 
-$ su - ${USER}
+su - ${USER}
 
 You will be prompted to enter your user’s password to continue.
 
@@ -87,8 +87,48 @@ The rest of this article assumes you are running the docker command as a user in
 
 Let’s explore the docker command next.
 
-# Setting Docker in a project
+# Setting DockerFile in a project
 
 ## to check all the available images in the project
 
 $ docker image ls
+
+## setup a Docker File in Project
+
+1. Make a DockerFile
+
+2. Set up a Base Image
+   -The base image would be a layer of another imge which in our case is a node image
+   -Node image is collection of node modules running on a apline server
+   -- To check for your desire node image visit https://hub.docker.com/_/node
+
+3. Set up the Base Directory
+   -WORKDIR /app
+   --it could be any name
+
+4. To avoid copy all the code First copy Package.Json
+   -Copy Package. Json .
+
+5.Installing NPM (will only insatll packages that are new else it will use Cache not the first tile )
+-RUN npm install
+
+6. Copy all of your Local Code to Some folder in directory
+   COPY .(all Code in local Directory) .(Directory in Image)
+
+7. setting up env Variables
+   -ENV ......
+   --copy .env file but put ENV in front of all variable
+
+8. Expose your desired port to image
+   -Expose 3000
+
+Note-- Image port then can be reflected to another port
+
+9. RUN the Image
+   -CMD ["npm", "start"]
+
+# Set Dockerignore
+
+1. Make a file name .dockerignore
+
+2. copy all the file from .gitignore to .dockerignore
