@@ -227,6 +227,120 @@ To remove all container including running
 Docker Compose is a tool that was developed to help define and share multi-container applications.
 With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
 
-`dockercompose.yaml`
+for docker compose installation use Clcik [Here][docer-compose installtion]
+[docer-compose installtion]: https://docs.docker.com/compose/install/compose-desktop/
+
+# Installing Compose on Linux systems
+
+In this section, you can find various methods for installing Compose on Linux.
+
+### Installation methods
+
+Installing Docker Desktop for Linux is the easiest and recommended installation route. Check the Desktop for Linux supported platforms page to verify the supported Linux distributions and architectures.
+
+The following other methods are possible:
+
+Using the automated convenience scripts (for testing and development environments). These scripts install Docker Engine and Docker CLI with the Compose plugin. For this route, go to the Docker Engine install page and follow the provided instructions. After installing Desktop for Linux, this is the recommended route.
+
+Setting up Docker’s repository and using it to install Docker CLI Compose plugin. See the Install using the repository section on this page. This is the second best route.
+
+Installing the Docker CLI Compose plugin manually. See the Install the plugin manually section on this page. Note that this option requires you to manage upgrades manually as well.
+
+## Install using the repository
+
+If you have already set up the Docker repository jump to step 2.
+
+Set up the repository. Go to the “Set up the repository” section of the chosen Linux distribution. found on the Docker Engine installation pages to check the instructions.
+
+Update the apt package index, and install the latest version of Docker Compose:
+
+Or, if using a different distro, use the equivalent package manager instructions.
+
+` sudo apt-get update`
+
+` sudo apt-get install docker-compose-plugin`
+
+Alternatively, to install a specific version of Compose CLI plugin:
+
+a. List the versions available in your repo:
+
+`apt-cache madison docker-compose-plugin`
+b. From the list obtained use the version string you can in the second column to specify the version you wish to install.
+
+c. Install the selected version:
+
+` sudo apt-get install docker-compose-plugin=<VERSION_STRING>`
+
+where `<VERSION_STRING>` is, for example,2.3.3~ubuntu-focal.
+
+Verify that Docker Compose is installed correctly by checking the version.
+
+` docker compose version`
+
+## Install the plugin manually
+
+To run Compose as a non-root user, see Manage Docker as a non-root user.
+
+To download and install the Compose CLI plugin, run:
+
+` DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}`
+
+` mkdir -p $DOCKER_CONFIG/cli-plugins`
+
+`curl -SL https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose`
+
+This command downloads the latest release of Docker Compose (from the Compose releases repository) and installs Compose for the active user under $HOME directory.
+
+#### To install Docker Compose for all users on your system, replace ~/.docker/cli-plugins with /usr/local/lib/docker/cli-plugins.
+
+A different version of Compose, substitute v2.6.0 with the version of Compose you want to use.
+Apply executable permissions to the binary:
+
+` chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose`
+
+or, if you chose to install Compose for all users:
+
+`sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose`
+
+Test the installation.
+
+`docker compose version`
+
+To download and install Compose standalone, run:
+
+` curl -SL https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose`
+
+Apply executable permissions to the standalone binary in the target path for the installation.
+Test and execute compose commands using` docker-compose`.
+
+If the command docker-compose fails after installation, check your path. You can also create a symbolic link to /usr/bin or any other directory in your path. For example:
+
+` sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
+
+# Uninstalling the Docker Compose CLI plugin
+
+To remove the Compose CLI plugin, run:
+
+` sudo apt-get remove docker-compose-plugin`
+
+Or, if using a different distro, use the equivalent package manager instruction to remove docker-compose-plugin.
+
+Manually installed
+
+If you used curl to install Compose CLI plugin, to uninstall it run:
+
+` rm $DOCKER_CONFIG/cli-plugins/docker-compose`
+
+or, if you have installed Compose for all users, run:
+
+` rm /usr/local/lib/docker/cli-plugins/docker-compose`
+
+You can also use:
+
+` docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.Path}}{{end}}{{end}}'`
+
+to inspect the location of the Compose CLI plugin.
 
 ## Creating a yaml file
+
+1. Create a `dockercompose.yaml` in the main folder with contains multiple repos
