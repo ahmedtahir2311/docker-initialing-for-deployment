@@ -133,15 +133,15 @@ To check images
 
 To make a local image build
 
-`sudo docker build -t (anyname you want to give to your docker image)`
+`sudo docker build . -t (anyname you want to give to your docker image)`
 
 To check all the images in docker
 
-`sudo docker image -a`
+`sudo docker image ls -a`
 
 To get ids of docker images
 
-`sudo docker image -aq`
+`sudo docker image ls -aq`
 
 To remove a image
 
